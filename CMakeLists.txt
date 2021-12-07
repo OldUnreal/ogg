@@ -90,6 +90,10 @@ if(BUILD_FRAMEWORK)
     set(BUILD_SHARED_LIBS TRUE)
 endif()
 
+if(NOT MSVC AND NOT APPLE)
+  add_definitions(-fPIC)
+endif()
+
 add_library(ogg ${OGG_HEADERS} ${OGG_SOURCES})
 add_library(Ogg::ogg ALIAS ogg)
 target_include_directories(ogg PUBLIC
